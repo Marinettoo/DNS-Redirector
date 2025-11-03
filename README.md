@@ -61,6 +61,7 @@ name.domain.com
 It will redirect you to the URL specified in the TXT record of your domain's DNS settings.
 
 5. Adding more subdomains
+
 To add more subdomains for redirection, simply create additional A and TXT records in your domain's DNS settings for each subdomain you want to redirect. Each record should contain the URL you want that subdomain to redirect to. 
 
 ![NOTION A CONFIG](IMAGES/Notion_A_config.png)
