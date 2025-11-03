@@ -1,5 +1,6 @@
 # DNS Redirector
 This project allows us to create a Flask server that redirects DNS queries to a specified IP address.
+
 ![Demonstration of DNS redirection](IMAGES/Redirector.gif)
 
 ## Installation
@@ -16,7 +17,9 @@ This project allows us to create a Flask server that redirects DNS queries to a 
    ```
 2. Configure your domain's DNS settings to point to the server's IP address. 
    Add an A record for your domain (or subdomain) pointing to the server's IP address. For the same subdomain, add a TXT record containing the redirect URL.
+
 ![IONOS A config](IMAGES/A_config.png)
+
 ![IONOS TXT config](IMAGES/TXT_config.png)
 
 3. Execute a DNS query to test the redirection
@@ -59,8 +62,10 @@ It will redirect you to the URL specified in the TXT record of your domain's DNS
 
 5. Adding more subdomains
 To add more subdomains for redirection, simply create additional A and TXT records in your domain's DNS settings for each subdomain you want to redirect. Each record should contain the URL you want that subdomain to redirect to. 
+
 ![NOTION A CONFIG](IMAGES/Notion_A_config.png)
+
 ![NOTION TXT CONFIG](IMAGES/Notion_TXT_config.png)
 
-### Licence
+## Licence
 This project is open source and its use is free.
