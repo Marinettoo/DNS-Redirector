@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acortador DNS - YourDomain.es</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body.animated-bg {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+        }
+    </style>
+</head>
+<body class="animated-bg text-white font-sans flex items-center justify-center min-h-screen">
+
+    <div class="bg-gray-800 p-8 rounded-lg shadow-xl w-full max-w-md m-4">
+        
+        <h1 class="text-3xl font-bold text-center mb-2 text-blue-400">
+            Redireccionador DNS
+        </h1>
+
+
+        <!-- 
+            Este formulario envía los datos a la ruta "/crear" 
+            usando el método "POST", activando tu función de Python.
+        -->
+        <form action="/crear" method="POST" class="space-y-4">
+            
+            <div>
+                <label for="subdominio" class="block text-sm font-medium mb-2 text-gray-300">Subdominio Personalizado (Opcional):</label>
+                <input type="text" id="subdominio" name="subdominio_personalizado" 
+                       class="w-full bg-gray-700 text-white border-gray-600 rounded-md p-3 focus:ring-2 focus:ring-blue-500 outline-none" 
+                       placeholder="ej: YouTube">
+                <label for="subdominio" class="block text-sm font-medium mb-2 text-gray-300">(Dejar vacío para generar un hash)</label>
+            </div>
+
+            <div>
+                <label for="url" class="block text-sm font-medium mb-2 text-gray-300">URL Larga (Obligatoria):</label>
+                <input type="url" id="url" name="url" 
+                       class="w-full bg-gray-700 text-white border-gray-600 rounded-md p-3 focus:ring-2 focus:ring-blue-500 outline-none" 
+                       placeholder="https://enlace-largo-al-que-quieres-redirigir.com/..." 
+                       required>
+            </div>
+
+            <button type="submit" 
+                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-md transition duration-200 shadow-lg">
+                 Crear Redirección
+            </button>
+            
+        </form>
+
+        <!-- 
+            Cuando envíes el formulario, la respuesta (el 
+            "✅ Registro creado" o "❌ Error") aparecerá en 
+            una nueva página, cargada por el propio Flask.
+        -->
+
+    </div>
+
+</body>
+</html>
