@@ -1,7 +1,13 @@
 # DNS Redirector
-This project allows us to create a Flask server that redirects DNS queries to a specified IP address.
+This project provides a complete web dashboard to create and manage DNS-based URL redirections. It uses the IONOS API to automatically create the necessary A and TXT records, turning your domain into a powerful custom link shortener service.
 
 ![Demonstration of DNS redirection](IMAGES/Redirector.gif)
+
+## Features:
+- Web Dashboard: A web interface to easily add new redirections.
+- API Automation: Connects directly to the IONOS API to instantly create A and TXT records.
+- Custom Subdomains: Creates custom links (e.g., hello.yourdomain.com).
+- Short Links (Hash): If you leave the subdomain field blank, it generates a short hash (e.g., a3f6b1.yourdomain.com).
 
 ## Installation
 1. Clone the repository
@@ -9,20 +15,35 @@ This project allows us to create a Flask server that redirects DNS queries to a 
    ```bash
    pip install -r requirements.txt
    ```
+3. Obtain your domain API Key and Zone ID (depends on your Domain provider).
 
 ## Usage
-1. Run the Flask server 
+1. Configure your .env document with your:
+   - API key
+   - Zone id
+   - Base Domain
+   - Server Public IP Address
+  
+2. Run the Flask server 
    ```bash
    python app.py
    ```
-2. Configure your domain's DNS settings to point to the server's IP address. 
-   Add an A record for your domain (or subdomain) pointing to the server's IP address. For the same subdomain, add a TXT record containing the redirect URL.
+3. When running the script, it will tell us where is it running (example:)
 
-![IONOS A config](IMAGES/A_config.png)
+   ![Script opening message](IMAGES/Executing_the_script.png)
 
-![IONOS TXT config](IMAGES/TXT_config.png)
+4. If we enter into the IP Address it gives us, we will see this Web page:
 
-3. Execute a DNS query to test the redirection
+   ![Inside_the_index_file](IMAGES/Inside_the_index_file.png)
+
+   Fill it with the subdomain you want to create.
+
+5. When pressing the button, this page will appear
+   
+   ![record_succesfully_added.png](IMAGES/record_succesfully_added.png)
+   
+
+6. Execute a DNS query to test the redirection
    ```bash
    dig @your_server_ip your_domain TXT
    ```
@@ -54,19 +75,11 @@ drive.marinettoo.es.    60      IN      A       12.34.56.78 (example IP)
 ```
 If you see the IP address in the ANSWER SECTION, the redirection is working correctly.
 
-4. Open a web browser and navigate to the redirected URL.
+7. Open a web browser and navigate to the redirected URL.
 ```bash
 name.domain.com
 ```
 It will redirect you to the URL specified in the TXT record of your domain's DNS settings.
-
-5. Adding more subdomains
-
-To add more subdomains for redirection, simply create additional A and TXT records in your domain's DNS settings for each subdomain you want to redirect. Each record should contain the URL you want that subdomain to redirect to. 
-
-![NOTION A CONFIG](IMAGES/Notion_A_config.png)
-
-![NOTION TXT CONFIG](IMAGES/Notion_TXT_config.png)
 
 ## Licence
 This project is open source and its use is free.
